@@ -49,7 +49,7 @@ app.use(express.json());
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://komal-jadhav-cleint-two.vercel.app",
+  "https://komal-jadhav-client-third.vercel.app",
 ];
 
 app.use(
