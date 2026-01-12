@@ -1,7 +1,6 @@
 
 
-// import dotenv from "dotenv";
-// dotenv.config();
+
 import "dotenv/config";
 import express from "express";
 import mongoose from "mongoose";
@@ -70,7 +69,6 @@ app.use(
   })
 );
 
-// app.options("*", cors()); // REMOVED: In Express 5, * is invalid. Global cors() handles preflights.
 
 
 app.use("/api/admin", adminRoutes);
@@ -117,9 +115,7 @@ if (process.env.NODE_ENV === "production") {
 
 const PORT = process.env.PORT || 5000;
 
-// Connect to MongoDB// =========================================================
-// DATABASE CONNECTION
-// =========================================================
+
 if (!process.env.MONGO_URL) {
   console.error("❌ FATAL: MONGO_URL environment variable is missing!");
 }
@@ -136,5 +132,5 @@ if (process.env.NODE_ENV !== "production") {
   });
 }
 
-// Export for Vercel
+
 export default app;
