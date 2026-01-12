@@ -117,24 +117,24 @@ if (process.env.NODE_ENV === "production") {
 
 const PORT = process.env.PORT || 5000;
 
-// Connect to MongoDB
+// Connect to MongoDB// =========================================================
+// DATABASE CONNECTION
+// =========================================================
+if (!process.env.MONGO_URL) {
+  console.error("❌ FATAL: MONGO_URL environment variable is missing!");
+}
+
 mongoose
   .connect(process.env.MONGO_URL)
   .then(() => console.log("✅ MongoDB Connected"))
-  .catch((err) => console.error("❌ MongoDB Error:", err.message));
+  .catch((err) => console.error("❌ MongoDB Connection Error:", err));
 
-if (process.env.NODE_ENV !== 'production') {
-  app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
-}
-
-if (process.env.npm_lifecycle_event === 'start') {
-} else {
-}
 
 if (process.env.NODE_ENV !== "production") {
-  mongoose.connection.once("open", () => {
-    app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running locally on port ${PORT}`);
   });
 }
 
-export default app
+// Export for Vercel
+export default app;
