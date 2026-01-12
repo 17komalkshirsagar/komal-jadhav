@@ -70,7 +70,7 @@ app.use(
   })
 );
 
-app.options("*", cors());
+// app.options("*", cors()); // REMOVED: In Express 5, * is invalid. Global cors() handles preflights.
 
 
 app.use("/api/admin", adminRoutes);
